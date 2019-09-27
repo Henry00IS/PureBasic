@@ -10,6 +10,7 @@ I recommend that you use [PBHGEN](https://github.com/00laboratories/PBHGEN) when
 - [Lua 5.3.0](/Lua) - x86 / x64
 - [OpenAL Soft 1.15.1](/OpenAL%20Soft) - x86 / x64
 - [OpenAL Soft 1.16.0](/OpenAL%20Soft) - x86 / x64
+- [DevIL 1.7.8](/DevIL) - x86 (.lib)
 
 # PureBasic Libraries
 - [StringConverter](/StringConverter) - Adds methods to easily convert between different string formats.
