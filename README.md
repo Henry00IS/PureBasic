@@ -14,3 +14,4 @@ I recommend that you use [PBHGEN](https://github.com/00laboratories/PBHGEN) when
 
 # PureBasic Libraries
 - [StringConverter](/StringConverter) - Adds methods to easily convert between different string formats.
+- [Queue](/Queue) - Adds a Queue to PureBasic using List macros.
