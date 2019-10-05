@@ -1,5 +1,5 @@
 # PureBasic Queue
-This module adds a Queue to PureBasic using one-line List macros.
+This module adds a Queue to PureBasic using List macros.
 
 - Uses PureBasic's List for all operations.
 - Accepts any data type (Value, String, Structured, ...) list.
