@@ -22,14 +22,14 @@ Queue::Free(TestQueue())
 ## Procedures
 
 ```PureBasic
-Clear(Queue) ; Removes all values from the queue.
-Create(Queue) ; Declares a new dynamic queue list.
-Dequeue(Queue) ; Removes the value at the beginning of the queue. Queue() = Dequeued Value.
+Clear(Queue)          ; Removes all values from the queue.
+Create(Queue)         ; Declares a new dynamic queue list.
+Dequeue(Queue)        ; Removes the value at the beginning of the queue. Queue() = Dequeued Value.
 Enqueue(Queue, Value) ; Adds a value to the end of the queue. Queue() = Enqueued Value.
-Free(Queue) ; Frees the specified queue and releases all its associated memory.
-IsEmpty(Queue) ; Returns true if the queue is empty; else false.
-Peek(Queue) ; Selects the value at the beginning of the queue without removing it.
-Size(Queue) ; Returns the number of elements in the queue.
+Free(Queue)           ; Frees the specified queue and releases all its associated memory.
+IsEmpty(Queue)        ; Returns true if the queue is empty; else false.
+Peek(Queue)           ; Selects the value at the beginning of the queue without removing it.
+Size(Queue)           ; Returns the number of elements in the queue.
 ```
 
 ## Implementation Details
