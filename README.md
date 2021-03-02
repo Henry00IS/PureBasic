@@ -13,5 +13,6 @@ I recommend that you use [PBHGEN](https://github.com/00laboratories/PBHGEN) when
 - [OpenAL Soft 1.16.0](/OpenAL%20Soft) - x86 / x64
 
 # PureBasic Libraries
+- [FastPoke](/FastPoke) - Immediately optimizes most PokeX() commands in PureBasic.
 - [StringConverter](/StringConverter) - Adds methods to easily convert between different string formats.
 - [Queue](/Queue) - Adds a Queue to PureBasic using List macros.
