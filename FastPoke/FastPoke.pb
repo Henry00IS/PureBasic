@@ -17,7 +17,11 @@
 
 CompilerIf #PB_Compiler_Debugger = 0 ; the debugger must be off to be faster.
   
-  Structure FastPoke
+  ; unique structure and module name to prevent potential naming conflicts
+  ; during builds. not accessed inside the module to reduce the build size.
+  ; externally only the name "OOLaboratories_FastPoke" can be seen.
+
+  Structure OOLaboratories_FastPoke
     StructureUnion
       B.b
       A.a
@@ -32,59 +36,67 @@ CompilerIf #PB_Compiler_Debugger = 0 ; the debugger must be off to be faster.
     EndStructureUnion
   EndStructure
   
+  DeclareModule OOLaboratories_FastPoke
+    
+    Macro Macr0ExpandedCount
+      MacroExpandedCount
+    EndMacro
+    
+    Macro FastPoke(UniqueID, Type, MemoryBuffer, Number)
+      CompilerIf #PB_Compiler_Procedure = ""
+        Define *OOLaboratories_FastPoke_#UniqueID.OOLaboratories_FastPoke = MemoryBuffer
+      CompilerElse
+        Protected *OOLaboratories_FastPoke_#UniqueID.OOLaboratories_FastPoke = MemoryBuffer
+      CompilerEndIf
+      *OOLaboratories_FastPoke_#UniqueID\Type = Number
+    EndMacro
+    
+  EndDeclareModule : Module OOLaboratories_FastPoke : EndModule
+  
   Macro PokeB(MemoryBuffer, Number)
-    Protected *FastPokeB#MacroExpandedCount.FastPoke = MemoryBuffer
-    *FastPokeB#MacroExpandedCount\B = Number
+    OOLaboratories_FastPoke::FastPoke(OOLaboratories_FastPoke::Macr0ExpandedCount, B, MemoryBuffer, Number)
   EndMacro
   
-  Macro PokeA(MemoryBuffer, Ascii)
-    Protected *FastPokeA#MacroExpandedCount.FastPoke = MemoryBuffer
-    *FastPokeA#MacroExpandedCount\A = Ascii
+  Macro PokeA(MemoryBuffer, Number)
+    OOLaboratories_FastPoke::FastPoke(OOLaboratories_FastPoke::Macr0ExpandedCount, A, MemoryBuffer, Number)
   EndMacro
   
-  Macro PokeC(MemoryBuffer, Character)
-    Protected *FastPokeC#MacroExpandedCount.FastPoke = MemoryBuffer
-    *FastPokeC#MacroExpandedCount\C = Character
+  Macro PokeC(MemoryBuffer, Number)
+    OOLaboratories_FastPoke::FastPoke(OOLaboratories_FastPoke::Macr0ExpandedCount, C, MemoryBuffer, Number)
   EndMacro
   
   Macro PokeW(MemoryBuffer, Number)
-    Protected *FastPokeW#MacroExpandedCount.FastPoke = MemoryBuffer
-    *FastPokeW#MacroExpandedCount\W = Number
+    OOLaboratories_FastPoke::FastPoke(OOLaboratories_FastPoke::Macr0ExpandedCount, W, MemoryBuffer, Number)
   EndMacro
   
-  Macro PokeU(MemoryBuffer, Unicode)
-    Protected *FastPokeU#MacroExpandedCount.FastPoke = MemoryBuffer
-    *FastPokeU#MacroExpandedCount\U = Unicode
+  Macro PokeU(MemoryBuffer, Number)
+    OOLaboratories_FastPoke::FastPoke(OOLaboratories_FastPoke::Macr0ExpandedCount, U, MemoryBuffer, Number)
   EndMacro
   
   Macro PokeL(MemoryBuffer, Number)
-    Protected *FastPokeL#MacroExpandedCount.FastPoke = MemoryBuffer
-    *FastPokeL#MacroExpandedCount\L = Number
+    OOLaboratories_FastPoke::FastPoke(OOLaboratories_FastPoke::Macr0ExpandedCount, L, MemoryBuffer, Number)
   EndMacro
   
   Macro PokeI(MemoryBuffer, Number)
-    Protected *FastPokeI#MacroExpandedCount.FastPoke = MemoryBuffer
-    *FastPokeI#MacroExpandedCount\I = Number
+    OOLaboratories_FastPoke::FastPoke(OOLaboratories_FastPoke::Macr0ExpandedCount, I, MemoryBuffer, Number)
   EndMacro
   
   Macro PokeF(MemoryBuffer, Number)
-    Protected *FastPokeF#MacroExpandedCount.FastPoke = MemoryBuffer
-    *FastPokeF#MacroExpandedCount\F = Number
+    OOLaboratories_FastPoke::FastPoke(OOLaboratories_FastPoke::Macr0ExpandedCount, F, MemoryBuffer, Number)
   EndMacro
   
-  Macro PokeQ(MemoryBuffer, Quad)
-    Protected *FastPokeQ#MacroExpandedCount.FastPoke = MemoryBuffer
-    *FastPokeQ#MacroExpandedCount\Q = Quad
+  Macro PokeQ(MemoryBuffer, Number)
+    OOLaboratories_FastPoke::FastPoke(OOLaboratories_FastPoke::Macr0ExpandedCount, Q, MemoryBuffer, Number)
   EndMacro
   
-  ; this is slightly slower in the benchmarks (PureBasic 5.73 LTS x64).
-  ;Macro PokeD(MemoryBuffer, Double)
-  ;  Protected *FastPokeD#MacroExpandedCount.FastPoke = MemoryBuffer
-  ;  *FastPokeD#MacroExpandedCount\D = Double
-  ;EndMacro
-
+  ; this is often slightly slower in the benchmarks (PureBasic 5.73 LTS x64).
+  ; Macro FPokeD(MemoryBuffer, Number)
+  ;   OOLaboratories_FastPoke::FastPoke(OOLaboratories_FastPoke::Macr0ExpandedCount, D, MemoryBuffer, Number)
+  ; EndMacro
+  
 CompilerEndIf
 ; IDE Options = PureBasic 5.73 LTS (Windows - x64)
-; CursorPosition = 18
-; Folding = --
+; CursorPosition = 87
+; FirstLine = 45
+; Folding = ---
 ; EnableXP
