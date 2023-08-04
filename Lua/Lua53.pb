@@ -349,7 +349,7 @@ Procedure Lua_Initialize()
   Global lua_newthread.__proto_lua_newthread                 = GetFunction(DLL_LUA, "lua_newthread")
   Global lua_atpanic.__proto_lua_atpanic                     = GetFunction(DLL_LUA, "lua_atpanic")
   CompilerIf #LUA_VERSION_PUREBASIC = 530
-    Global lua_version.__proto_lua_atpanic                   = GetFunction(DLL_LUA, "lua_version")
+    Global lua_version.__proto_lua_version                   = GetFunction(DLL_LUA, "lua_version")
   CompilerEndIf
   ;--------------------------------------------------------------------------
   ; * Lua Library: Basic Stack Manipulation
@@ -639,7 +639,8 @@ Procedure lua_getglobal_fixed(L, String$) ; Because of a memory leak with .p-asc
   lua_getglobal(L, *String_Buffer)
   FreeMemory(*String_Buffer)
 EndProcedure
-; IDE Options = PureBasic 5.71 LTS (Windows - x86)
-; CursorPosition = 6
+; IDE Options = PureBasic 6.02 LTS (Windows - x64)
+; CursorPosition = 351
+; FirstLine = 339
 ; Folding = ---------
 ; EnableXP
